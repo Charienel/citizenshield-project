@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .announcements-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .announcement {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .announcement-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .announcement-content {
+            margin-bottom: 10px;
+        }
+
+        .announcement-date {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .past-announcements {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="nav-logo">
+                <img src="clogo.png" alt="CitizenShield Logo">
+                <img src="seal.png" alt="Barangay Seal">
+            </div>
+            <div class="menu">
+                <a href="#" class="nav-link" data-target="home">Home</a>
+                <a href="#" class="nav-link" data-target="concerns">Concerns</a>
+                <a href="#" class="nav-link" data-target="announcement">Announcement</a>
+                <a href="#" class="nav-link" data-target="hotlines">Hotlines</a>
+            </div>
+        </nav>
+        <div class="welcome">
+            <h1>ABOUT US:</h1>
+            <h2>Welcome to Citizenshield!</h2>
+            <p>A groundbreaking initiative dedicated to enhancing community engagement and safety in Barangay Baikingon...</p>
+        </div>
+    </header>
+    <main>
+        <div id="home" class="content-box"></div>
+
+        <div id="about" class="content-box">
+            <h2>About Us:</h2>
+            <p>CitizenShield Net is a new project in Barangay Baikingon aimed at improving community safety through technology...</p>
+        </div>
+
+        <div id="concerns" class="content-box">
+            <h2>Concerns</h2>
+            <form class="concerns-form">
+                <label for="name">Name</label>
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <label for="comments">Concerns</label>
+                <div class="input-group">
+                    <textarea id="comments" rows="6" placeholder="Add your concerns..."></textarea>
+                </div>
+                <div class="form-actions">
+                     <button type="button" id="cancelButton">Cancel</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="announcement" class="content-box">
+            <h2>Announcements</h2>
+            <div class="announcements-container" id="announcements">
+                <!-- Announcements will be dynamically generated here -->
+            </div>
+
+            <div class="past-announcements">
+                <a id="viewPast" href="#">View Past Announcements</a>
+            </div>
+        </div>
+
+        <div id="hotlines" class="content-box">
+            <h2>Hotlines</h2>
+            <div class="hotline-list">
+                <!-- First Scroll Section -->
+                <div class="hotline-group">
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 1" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 1</h3>
+                            <p>Contact Number: 0912-345-6789</p>
+                        </div>
+                    </div>
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 2" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 2</h3>
+                            <p>Contact Number: 0912-345-6790</p>
+                        </div>
+                    </div>
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 3" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 3</h3>
+                            <p>Contact Number: 0912-345-6791</p>
+                        </div>
+                    </div>
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 4" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 4</h3>
+                            <p>Contact Number: 0912-345-6792</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Second Scroll Section -->
+                <div class="hotline-group">
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 5" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 5</h3>
+                            <p>Contact Number: 0912-345-6793</p>
+                        </div>
+                    </div>
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 6" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 6</h3>
+                            <p>Contact Number: 0912-345-6794</p>
+                        </div>
+                    </div>
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 7" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 7</h3>
+                            <p>Contact Number: 0912-345-6795</p>
+                        </div>
+                    </div>
+                    <div class="hotline-item">
+                        <img src="profile.png" alt="Official 8" class="official-pic">
+                        <div class="hotline-info">
+                            <h3>Official Name 8</h3>
+                            <p>Contact Number: 0912-345-6796</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getDatabase, ref, set, get, child, update } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"; // Import Firebase Auth
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYg9Ic5NYxj6mGncEk9prXd7OlPMUz5f8",
+            authDomain: "cs-pn-f5ac0.firebaseapp.com",
+            projectId: "cs-pn-f5ac0",
+            storageBucket: "cs-pn-f5ac0.appspot.com",
+            messagingSenderId: "29471816373",
+            appId: "1:29471816373:web:d3d963245930f8ba399cfc"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(); // Initialize Firebase Auth
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-link');
+            const contentBoxes = document.querySelectorAll('.content-box');
+    
+            function showContentBox(id) {
+                contentBoxes.forEach(box => {
+                    if (box.id === id) {
+                        box.classList.add('active');
+                    } else {
+                        box.classList.remove('active');
+                    }
+                });
+            }
+    
+            function resetToHome() {
+                document.querySelector('.welcome').style.display = 'block';
+                showContentBox('home');
+            }
+    
+            resetToHome();
+    
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    if (targetId === 'home') {
+                        resetToHome();
+                    } else {
+                        document.querySelector('.welcome').style.display = 'none';
+                        showContentBox(targetId);
+                    }
+                });
+            });
+    
+            document.getElementById("cancelButton").addEventListener("click", function() {
+                window.location.href = "home.html"; // Ensure this points to your actual home page URL
+            });
+    
+            // Add event listener for form submission
+            const concernsForm = document.querySelector('.concerns-form');
+            concernsForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+    
+                const name = document.getElementById('name').value.trim();
+                const comments = document.getElementById('comments').value.trim();
+    
+                // Check if the name and comments fields are filled
+                if (!name) {
+                    alert("Please enter your name.");
+                    return;
+                }
+    
+                if (!comments) {
+                    alert("Please enter your concerns.");
+                    return;
+                }
+    
+                // Get the current date and time
+                const currentDate = new Date();
+                const formattedDate = currentDate.toLocaleString(); // Format as per locale settings
+    
+                // Check if user is logged in
+                const userId = auth.currentUser ? auth.currentUser.uid : null;
+    
+                if (userId) {
+    // Retrieve residentId from the user's data
+    get(child(ref(database), `users/${userId}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const residentId = userData.residentId; // Get residentId from user's data
+
+            // Create a new concern object
+            const newConcern = {
+                concernId: Date.now(), // Use timestamp as a unique ID
+                residentId: residentId, // Add residentId under concernId
+                postId: Math.random().toString(36).substring(2, 15), // Random post ID
+                name: name,
+                details: comments,
+                date: formattedDate, // Add the formatted date
+                status: 'pending' // Set status as pending
+            };
+                            // Save to Firebase
+set(ref(database, 'concerns/' + newConcern.concernId), newConcern)
+    .then(() => {
+        // Now update the user's concerns data
+        const userConcernsRef = ref(database, `users/${userId}/concerns`); // Corrected template literal usage
+        update(userConcernsRef, {
+            [newConcern.concernId]: newConcern // Use concernId as the key for the concern
+        }).then(() => {
+            alert('Concern submitted successfully!');
+            concernsForm.reset(); // Clear the form after successful submission
+        }).catch(error => {
+            console.error('Error updating user concerns: ', error);
+        });
+    })
+    .catch(error => {
+        console.error('Error submitting concern: ', error);
+    });
+} else {
+    alert("User data not found!");
+}
+}).catch(error => {
+    console.error('Error fetching user data: ', error);
+});
+} else {
+    alert("User not logged in!");
+}
+});
+
+
+            const announcementsContainer = document.getElementById('announcements');
+            const viewPastLink = document.getElementById('viewPast');
+    
+            const announcements = [
+                {
+                    title: "Scheduled Power Outage",
+                    content: "There will be a scheduled power outage on October 12th, from 10:00 AM to 2:00 PM. Please prepare accordingly.",
+                    date: "October 10, 2024"
+                },
+                {
+                    title: "Community Meeting",
+                    content: "Join us for a community meeting on October 15th at the Barangay Hall. We will discuss upcoming projects and address concerns.",
+                    date: "October 9, 2024"
+                },
+                {
+                    title: "Health and Safety Guidelines",
+                    content: "Due to the rise in COVID-19 cases, we urge everyone to follow health guidelines such as wearing masks in public areas.",
+                    date: "October 8, 2024"
+                },
+                {
+                    title: "Barangay Clean-Up Drive",
+                    content: "Join us for a clean-up drive this weekend! Meet at 8:00 AM at the main plaza, and let's work together to keep our community clean.",
+                    date: "October 7, 2024"
+                }
+            ];
+    
+            let displayedAnnouncements = 2;
+            let currentIndex = 0;
+    
+            function displayAnnouncements() {
+                announcementsContainer.innerHTML = ""; // Clear the container
+    
+                const end = Math.min(currentIndex + displayedAnnouncements, announcements.length);
+                for (let i = currentIndex; i < end; i++) {
+                    const announcementDiv = document.createElement('div');
+                    announcementDiv.classList.add('announcement');
+                    announcementDiv.innerHTML = `
+    <div class="announcement-title">${announcements[i].title}</div>
+    <div class="announcement-content">${announcements[i].content}</div>
+    <div class="announcement-date"><em>Posted on ${announcements[i].date}</em></div>
+`;
+                    announcementsContainer.appendChild(announcementDiv);
+                }
+            }
+    
+            viewPastLink.addEventListener('click', () => {
+                currentIndex += displayedAnnouncements;
+                if (currentIndex >= announcements.length) {
+                    currentIndex = 0;
+                }
+                displayAnnouncements();
+            });
+    
+            // Display the first set of announcements on page load
+            displayAnnouncements();
+        });
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;
+    background: url(background.png) no-repeat center center fixed;
+    background-size: cover;
+    padding-right: calc(10%);
+}
+
+.box {
+    width: 420px;
+   
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    position: absolute;
+    right: 15px;
+    top: 56%;
+    transform: translateY(-50%);
+   
+}
+
+.nav {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 80px;
+    width: 80px;
+    margin-right: 25px;
+}
+
+.box h1 {
+    font-size: 36px;
+    text-align: start;
+    margin-bottom: 10px; /* Spacing below the title */
+}
+
+.box h2 {
+    font-size: 20px;
+    text-align: start;
+    margin-top: 10px;
+    margin-bottom: 20px; /* Spacing above the form */
+}
+
+.box .form {
+    margin-top: 20px;
+}
+
+.box .form form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #080808;
+    transition: border 0.3s; /* Smooth border transition */
+}
+
+.input-box input:focus {
+    border: 2px solid rgb(243, 109, 109); /* Highlight input on focus */
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #080808;
+    font-size: 1.2em;
+}
+
+.input-box input::placeholder {
+    color: #080808;
+}
+
+.sub {
+    padding: 15px 20px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: rgb(243, 109, 109);
+    margin-top: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.sub:hover {
+    background-color: rgb(220, 95, 95); /* Darker shade on hover */
+}
+
+.register-link p {
+    margin-top: 10px; /* Space above the link */
+}
+
+.register-link p a {
+    color: #fff; /* Make the link white */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.register-link p a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.index-link p {
+    margin-top: 10px; /* Space above the link */
+}
+
+.index-link p a {
+    color: #fff; /* Make the link white */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.index-link p a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

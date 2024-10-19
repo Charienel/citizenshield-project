@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-image: url('background.png'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    height: 100vh;
+    color: #333; /* Set a base color for text */
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 25px; /* Slightly larger padding */
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background for better contrast */
+    border-radius: 8px; 
+    position: relative; 
+    z-index: 10; 
+}
+
+.nav-logo img {
+    max-height: 50px; 
+    margin-right: 10px; 
+}
+
+.menu {
+    display: flex;
+    align-items: center; 
+}
+
+.menu a {
+    color: #f0f0f0; /* Softer color for links */
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s; /* Added color transition */
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #fff; /* Change text color on hover for better visibility */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center; 
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 8px 12px;
+    border-radius: 8px; 
+    margin-left: 20px; 
+}
+
+.username {
+    color: #f0f0f0; 
+    font-size: 18px;
+}
+
+.welcome {
+    color: #f0f0f0;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 8px; 
+    max-width: 450px; 
+    text-align: justify; 
+    position: absolute;
+    right: 0; 
+    top: 210px; 
+    margin: 20px; 
+}
+
+.welcome p {
+    margin: 0 0 10px 0; 
+}
+
+.content-box {
+    display: none;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(79, 94, 69, 0.9); /* More transparent to blend better */
+    color: #f0f0f0; /* Light text for readability */
+    z-index: 1; 
+}
+
+#about, #concerns {
+    width: 80%;
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.concerns-form {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent for the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+.concerns-form label {
+    display: block;
+    font-size: 1.2rem;
+    color: #4f5e45;
+    margin-bottom: 8px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input::placeholder, 
+textarea::placeholder {
+    color: #aaa;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cancel-btn {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background-color: #d49c73;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Added transform transition */
+}
+
+.submit-btn:hover {
+    background-color: #b57d56;
+    transform: scale(1.05); /* Slightly grow on hover */
+}
+
+#home {
+    display: none; 
+    background: none; 
+    border: none; 
+    margin: 0; 
+    padding: 0; 
+}
+
+#home.show {
+    display: block; 
+}
+
+#concerns .form-actions {
+    margin-top: 20px;
+}
+
+#concerns .cancel-btn {
+    background-color: #f0f0f0;
+    color: #333; 
+}
+
+.content-box.active {
+    display: block; 
+}
+
+.announcements-container {
+    max-height: 300px; /* Limiting the height for scrolling */
+    overflow-y: auto; /* Enable scrolling if content exceeds max height */
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque for contrast */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Light border for definition */
+    color: #333; /* Dark text for readability */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.announcement {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Light border between announcements */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.announcement-title {
+    font-weight: bold; /* Bold title for emphasis */
+    margin-bottom: 5px;
+    font-size: 20px; /* Increased font size for titles */
+    color: #d49c73; /* Distinctive color for titles */
+}
+
+.announcement-content {
+    margin-bottom: 10px;
+    font-size: 16px; /* Consistent font size */
+    color: #444; /* Slightly darker for better contrast */
+}
+
+.announcement-date {
+    font-size: 14px; /* Slightly larger for visibility */
+    color: #888; /* Lighter gray for date text */
+}
+
+.past-announcements {
+    text-align: center; /* Center text */
+    margin-top: 10px; /* Space above */
+}
+
+.past-announcements a {
+    color: #d49c73; /* Title color for links */
+    cursor: pointer; /* Pointer on hover */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size for links */
+    font-weight: bold; /* Bold links for emphasis */
+    transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+.past-announcements a:hover {
+    color: #b57d56; /* Darker shade on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+.hotline-list {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    max-height: 400px; 
+    overflow-y: auto; 
+}
+
+.hotline-item {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    background-color: rgba(255, 255, 255, 0.9); /* Lightened for better visibility */
+    padding: 15px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-bottom: 20px; 
+}
+
+.official-pic {
+    width: 120px; 
+    height: 120px; 
+    border-radius: 50%;
+    margin-bottom: 10px; 
+}
+
+.hotline-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #4f5e45;
+    text-align: center; 
+}
+
+.hotline-info p {
+    margin: 5px 0 0;
+    color: #333;
+    text-align: center; 
+}
+/* Style for the profile menu */
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+#profileToggle {
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#profileDropdown {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#profileDropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+#profileDropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}

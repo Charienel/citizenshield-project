@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-logo">
+            <img src="clogo.png" alt="Logo 1">
+        </div>
+        <div class="nav-logo">
+            <img src="seal.png" alt="Logo 2">
+        </div>
+    </nav>
+    <div class="box">
+        <div class="form">
+            <form id="loginForm">
+                <h1>Log In</h1>
+                <h2>Please input details.</h2>
+                <div class="input-box">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" placeholder="Email" id="loginEmail" required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock icon" id="lockIcon"></i>
+                    <i class="fas fa-eye icon" id="eyeIcon" style="display:none;"></i>
+                    <input type="password" placeholder="Password" id="loginPassword" required>
+                </div>
+                <input type="submit" value="Login" class="sub">
+                <div class="register-link">
+                    <p>Don't have an account? <a href="#" id="sign-up-link">Sign Up</a></p>
+                </div>
+            </form>
+            
+            <form id="signupForm" style="display: none;">
+                <h1>Sign Up</h1>
+                <h2>Create Account</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="First Name" id="sfname" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Last Name" id="slname" required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" placeholder="Email" id="signupEmail" required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock icon" id="signupLockIcon"></i>
+                    <i class="fas fa-eye icon" id="signupEyeIcon" style="display:none;"></i>
+                    <input type="password" placeholder="Password" id="signupPassword" required>
+                </div>
+                <div class="input-box">
+                    <input type="tel" placeholder="Contact Number" id="contactNumber" required>
+                </div>
+                <input type="submit" value="Sign Up" class="sub">
+                <div class="index-link">
+                    <p>Already have an account? <a href="#" id="index-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+        import { getDatabase, ref, set, get, update } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYg9Ic5NYxj6mGncEk9prXd7OlPMUz5f8",
+            authDomain: "cs-pn-f5ac0.firebaseapp.com",
+            projectId: "cs-pn-f5ac0",
+            storageBucket: "cs-pn-f5ac0.appspot.com",
+            messagingSenderId: "29471816373",
+            appId: "1:29471816373:web:d3d963245930f8ba399cfc"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getDatabase(app);
+    
+        document.getElementById("loginForm").addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const residentId = user.uid;
+
+            // Check if the user exists in the 'users' database and if not, create a new entry
+            get(ref(db, 'users/' + residentId)).then((snapshot) => {
+                if (!snapshot.exists()) {
+                    // If the user doesn't exist in the 'users' node, add them
+                    set(ref(db, 'users/' + residentId), {
+                        residentId: residentId,
+                        concerns: {} // Initialize concerns as an empty object
+                    });
+                }
+
+                // Redirect to home.html after successful login
+                window.location.href = "home.html";
+            });
+        })
+        .catch((error) => {
+            console.error("Error signing in:", error.message);
+            alert("Login failed. Please check your email and password.");
+        });
+});
+
+document.getElementById("signupForm").addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+    const firstName = document.getElementById("sfname").value;
+    const lastName = document.getElementById("slname").value;
+    const contactNumber = document.getElementById("contactNumber").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const residentId = user.uid;
+
+            // Store the user's information under the 'registration' node
+            set(ref(db, 'registration/' + residentId), {
+                residentId: residentId,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,  // Store the password
+                contactNumber: contactNumber
+            }).then(() => {
+                alert("Registration is successful! You can now log in.");
+                window.location.href = "index.html"; // Redirect to the login page after successful registration
+            }).catch((error) => {
+                console.error("Error writing to Firebase Database:", error);
+                alert("Registration failed. Please try again.");
+            });
+        })
+        .catch((error) => {
+            console.error("Error registering:", error.message);
+            alert("Registration failed. Please try again.");
+        });
+});
+        // Toggle password visibility for login
+        const loginPassword = document.getElementById('loginPassword');
+        const lockIcon = document.getElementById('lockIcon');
+        const eyeIcon = document.getElementById('eyeIcon');
+        eyeIcon.addEventListener('click', function() {
+            if (loginPassword.type === 'password') {
+                loginPassword.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                loginPassword.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+        loginPassword.addEventListener('focus', function() {
+            lockIcon.style.display = 'none';
+            eyeIcon.style.display = 'block';
+        });
+        loginPassword.addEventListener('blur', function() {
+            if (loginPassword.value === '') {
+                lockIcon.style.display = 'block';
+                eyeIcon.style.display = 'none';
+            }
+        });
+    
+        // Toggle password visibility for sign-up
+        const signupPassword = document.getElementById('signupPassword');
+        const signupLockIcon = document.getElementById('signupLockIcon');
+        const signupEyeIcon = document.getElementById('signupEyeIcon');
+        signupEyeIcon.addEventListener('click', function() {
+            if (signupPassword.type === 'password') {
+                signupPassword.type = 'text';
+                signupEyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                signupPassword.type = 'password';
+                signupEyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+        signupPassword.addEventListener('focus', function() {
+            signupLockIcon.style.display = 'none';
+            signupEyeIcon.style.display = 'block';
+        });
+        signupPassword.addEventListener('blur', function() {
+            if (signupPassword.value === '') {
+                signupLockIcon.style.display = 'block';
+                signupEyeIcon.style.display = 'none';
+            }
+        });
+
+        // Switch between login and sign-up forms
+        document.getElementById("sign-up-link").addEventListener('click', function() {
+            document.getElementById("signupForm").style.display = "block";
+            document.getElementById("loginForm").style.display = "none";
+        });
+
+        document.getElementById("index-link").addEventListener('click', function() {
+            document.getElementById("signupForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        });
+
+        // Load concerns from the Firebase database when the user logs in
+        function loadUserConcerns(residentId) {
+            const concernsRef = ref(db, 'users/' + residentId + '/concerns');
+            get(concernsRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const concerns = snapshot.val();
+                    // Code to display concerns on home.html can go here
+                    // For example, iterate through the concerns and append them to the UI
+                } else {
+                    console.log("No concerns found.");
+                }
+            }).catch((error) => {
+                console.error("Error fetching concerns:", error);
+            });
+        }
+    </script>
+</body>
+</html>
